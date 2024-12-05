@@ -53,8 +53,11 @@
 
 -спроектировать БД
 -настроить права пользователей для БД (ADMIN, MANAGER, CUSTOMER):
+
   ADMIN: SELECT, INSERT, UPDATE, DELETE во все таблицы
+  
   MANAGER: SELECT, INSERT, UPDATE, DELETE в таблицы с покупателями, автомобилями
+  
   CUSTOMER: SELECT в таблицы с автомобилями
   
 -реализовать бэкенд:
