@@ -38,7 +38,6 @@ public class StoreController {
 
 
 @RestController
-//@RequestMapping("/api/cars")
 public class CarController {
     @Autowired
     private CarService carService;
