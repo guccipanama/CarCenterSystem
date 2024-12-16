@@ -18,6 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -31,10 +33,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/welcome", "/new-user").permitAll()
-                        .requestMatchers("api/**").authenticated())
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
-                .build();
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/welcome").permitAll()  //, "/new-user", "/add-car", "/add-customer"
+                        .requestMatchers("api/cars/**", "api/centers/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("api/**").hasRole("ADMIN")
+                        .anyRequest().authenticated())
+                .httpBasic(withDefaults()).build();
+                //.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
+                //return http.build();
     }
 
 

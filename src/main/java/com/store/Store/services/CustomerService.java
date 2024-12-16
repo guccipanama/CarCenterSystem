@@ -1,6 +1,7 @@
 package com.store.Store.services;
 
 
+import com.store.Store.models.Car;
 import com.store.Store.models.Customer;
 import com.store.Store.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class CustomerService {
     public List<Customer> getAllCustomers() { return CustomerRepository.findAll();
     }
 
+    public Customer saveCustomer(Customer customer) {
+        return CustomerRepository.save(customer);
+    }
 }
 
 

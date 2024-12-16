@@ -16,11 +16,11 @@ import lombok.ToString;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long carId;
+    private String carId;
     //private Long carCenterId;
 
     private String carName;
-    private Double carCost;
+    private String carCost;
 
     @OneToOne
     @JoinColumn(name = "car_center_id", nullable = false)

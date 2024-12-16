@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private String orderId;
 
     private LocalDate orderDate;
 

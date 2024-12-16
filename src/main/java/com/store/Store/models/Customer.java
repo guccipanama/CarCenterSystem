@@ -17,9 +17,9 @@ import java.sql.Date;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
+    private String customerId;
 
     private String customerName;
-    private Date customerBirthdate;
+    private String customerBirthdate;
     private String customerPassport;
 }

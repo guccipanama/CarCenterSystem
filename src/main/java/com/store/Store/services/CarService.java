@@ -30,4 +30,9 @@ public class CarService {
         return carOptional.map(Car::getCarName)
                 .orElseThrow(() -> new RuntimeException("Car not found with id: " + id));
     }
+
+
+    public Car saveCar(Car car) {
+        return carRepository.save(car);
+    }
 }

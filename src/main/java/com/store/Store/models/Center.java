@@ -15,7 +15,7 @@ import lombok.ToString;
 public class Center {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long centerId;
+    private String centerId;
 
     @Getter
     private String centerAddress;

@@ -1,11 +1,11 @@
 package com.store.Store.controllers;
 
+import com.store.Store.models.Car;
 import com.store.Store.models.Customer;
 import com.store.Store.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +27,12 @@ public class CustomerController {
     @GetMapping("/api/customers/{identity}/name")
     public String getCustomerName(@PathVariable("identity") Long id) {
         return CustomerService.getCustomerNameById(id);
+    }
+
+    @PostMapping("/add-customer")
+    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+        Customer savedCustomer = CustomerService.saveCustomer(customer);
+        return ResponseEntity.ok(savedCustomer);
     }
 }
 
