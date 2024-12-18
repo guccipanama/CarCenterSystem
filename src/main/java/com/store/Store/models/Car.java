@@ -17,14 +17,14 @@ public class Car {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String carId;
-    private String carCenterId;
+    //private String carCenterId;
 
     private String carName;
     private String carCost;
 
-    //@OneToOne
-    //@JoinColumn(name = "car_center_id", nullable = false)
-    //private Center center;
+    @OneToOne
+    @JoinColumn(name = "car_center_id", nullable = false)
+    private Center center;
 
     //public String getCarCenter() { return center.getCenterAddress();
     //}

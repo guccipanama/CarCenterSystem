@@ -19,10 +19,10 @@ public class Order {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String orderId;
     private String orderDate;
-    private String orderCarId;
-    private String orderCustomerId;
+    //private String orderCarId;
+    //private String orderCustomerId;
 
-    /*private LocalDate orderDate;
+    //private LocalDate orderDate;
 
     @ManyToOne
     @JoinColumn(name = "order_car_id", nullable = false)
@@ -30,5 +30,5 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "order_customer_id", nullable = false)
-    private Customer customer;*/
+    private Customer customer;
 }
