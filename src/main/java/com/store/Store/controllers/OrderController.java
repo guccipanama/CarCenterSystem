@@ -1,11 +1,11 @@
 package com.store.Store.controllers;
 
+import com.store.Store.models.Car;
 import com.store.Store.models.Order;
 import com.store.Store.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,10 +25,14 @@ public class OrderController {
         return OrderService.findById(id);
     };
 
-    @GetMapping("/api/orders/{identity}/name")
-    public LocalDate getOrderDate(@PathVariable("identity") Long id) {
-        return OrderService.getOrderDateById(id);
+
+    @PostMapping(value="/add/order", consumes={"application/json"})
+    public ResponseEntity<Order> addOrder(@RequestBody Order order) {
+        Order savedOrder = OrderService.saveOrder(order);
+        return ResponseEntity.ok(savedOrder);
     }
+
+
 }
 
 

@@ -16,7 +16,7 @@ import java.sql.Date;
 @Table(name = "customer")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String customerId;
 
     private String customerName;

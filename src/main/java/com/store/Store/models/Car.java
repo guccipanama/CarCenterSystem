@@ -15,17 +15,17 @@ import lombok.ToString;
 @Table(name = "car")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String carId;
-    //private Long carCenterId;
+    private String carCenterId;
 
     private String carName;
     private String carCost;
 
-    @OneToOne
-    @JoinColumn(name = "car_center_id", nullable = false)
-    private Center center;
+    //@OneToOne
+    //@JoinColumn(name = "car_center_id", nullable = false)
+    //private Center center;
 
-    public String getCarCenter() { return center.getCenterAddress();
-    }
+    //public String getCarCenter() { return center.getCenterAddress();
+    //}
 }

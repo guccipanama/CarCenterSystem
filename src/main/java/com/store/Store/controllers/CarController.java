@@ -60,7 +60,7 @@ public class CarController {
         return carService.getCarNameById(id);
     }
 
-    @PostMapping("/add-car")
+    @PostMapping(value="/add/car", consumes={"application/json"})
     public ResponseEntity<Car> addCar(@RequestBody Car car) {
         Car savedCar = carService.saveCar(car);
         return ResponseEntity.ok(savedCar);

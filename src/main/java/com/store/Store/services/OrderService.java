@@ -1,6 +1,7 @@
 package com.store.Store.services;
 
 
+import com.store.Store.models.Center;
 import com.store.Store.models.Order;
 import com.store.Store.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,18 @@ public class OrderService {
         return OrderRepository.findById(id).get();
     }
 
-    public LocalDate getOrderDateById(Long id) {
-        Optional<Order> CustomerOptional = OrderRepository.findById(id);
-
+    public Optional<Order> getOrderDateById(Long id) {
+        return OrderRepository.findById(id);
         // Если запись найдена, возвращаем OrderDate, иначе сообщение об отсутствии
-        return CustomerOptional.map(Order::getOrderDate)
-                .orElseThrow(() -> new RuntimeException("Center not found with id: " + id));
+        //return CustomerOptional.map(Order::getOrderDate)
+        //        .orElseThrow(() -> new RuntimeException("Center not found with id: " + id));
     }
 
     public List<Order> getAllOrders() { return OrderRepository.findAll();
+    }
+
+    public Order saveOrder(Order order) {
+        return OrderRepository.save(order);
     }
 
 }

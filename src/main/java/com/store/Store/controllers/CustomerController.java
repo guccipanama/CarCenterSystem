@@ -29,7 +29,7 @@ public class CustomerController {
         return CustomerService.getCustomerNameById(id);
     }
 
-    @PostMapping("/add-customer")
+    @PostMapping(value="/add/customer", consumes={"application/json"})
     public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
         Customer savedCustomer = CustomerService.saveCustomer(customer);
         return ResponseEntity.ok(savedCustomer);

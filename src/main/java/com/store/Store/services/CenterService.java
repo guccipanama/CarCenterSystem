@@ -1,6 +1,7 @@
 package com.store.Store.services;
 
 
+import com.store.Store.models.Car;
 import com.store.Store.models.Center;
 import com.store.Store.repositories.CenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,7 @@ public class CenterService {
     public List<Center> getAllCenters() { return CenterRepository.findAll();
     }
 
+    public Center saveCenter(Center center) {
+        return CenterRepository.save(center);
+    }
 }
