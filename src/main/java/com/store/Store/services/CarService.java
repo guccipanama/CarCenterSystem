@@ -4,6 +4,7 @@ package com.store.Store.services;
 import com.store.Store.models.Car;
 import com.store.Store.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -34,5 +35,12 @@ public class CarService {
 
     public Car saveCar(Car car) {
         return carRepository.save(car);
+    }
+
+    public ResponseEntity<String> deleteCar(String id) {
+        return carRepository.findById(Long.valueOf(id)).map(car -> {
+            carRepository.delete(car);
+            return ResponseEntity.ok("Car с ID " + id + " был успешно удалён.");
+        }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

@@ -65,4 +65,10 @@ public class CarController {
         Car savedCar = carService.saveCar(car);
         return ResponseEntity.ok(savedCar);
     }
+
+    @DeleteMapping("/delete/car/{id}")
+    public ResponseEntity<ResponseEntity<String>> deleteCar(@PathVariable String id) {
+        ResponseEntity<String> savedCar = carService.deleteCar(id);
+        return ResponseEntity.ok(savedCar);
+    }
 }

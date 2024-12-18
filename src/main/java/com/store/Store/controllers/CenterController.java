@@ -39,4 +39,9 @@ public class CenterController {
         Center savedCenter = CenterService.saveCenter(center);
         return ResponseEntity.ok(savedCenter);
     }
+    @DeleteMapping("/delete/center/{id}")
+    public ResponseEntity<ResponseEntity<String>> deleteCenter(@PathVariable String id) {
+        ResponseEntity<String> savedCenter = CenterService.deleteCenter(id);
+        return ResponseEntity.ok(savedCenter);
+    }
 }

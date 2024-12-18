@@ -5,6 +5,7 @@ import com.store.Store.models.Center;
 import com.store.Store.models.Order;
 import com.store.Store.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -33,6 +34,12 @@ public class OrderService {
 
     public Order saveOrder(Order order) {
         return OrderRepository.save(order);
+    }
+    public ResponseEntity<String> deleteOrder(String id) {
+        return OrderRepository.findById(Long.valueOf(id)).map(order -> {
+            OrderRepository.delete(order);
+            return ResponseEntity.ok("Order с ID " + id + " был успешно удалён.");
+        }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }
