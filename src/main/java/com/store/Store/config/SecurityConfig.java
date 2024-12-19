@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/welcome").permitAll()  //, "/new-user", "/add-car", "/add-customer"
                         .requestMatchers("api/cars/**", "api/centers/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("api/**", "add/**").hasRole("ADMIN")
+                        .requestMatchers("api/**", "add/**", "delete/**", "/new-user").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .httpBasic(withDefaults()).build();
                 //.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
